@@ -28,7 +28,9 @@
 #   }
 #
 ################################################################################
-class apt_cacher_ng ($activated = true, $port = 3142) {
+class apt_cacher_ng (
+  $activated = true,
+  $port      = 3142) {
   # dependencies
   include repo
   # internal classes
