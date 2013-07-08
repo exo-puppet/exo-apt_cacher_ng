@@ -33,6 +33,7 @@ class apt_cacher_ng (
   $port      = 3142) {
   # dependencies
   include repo
+  include stdlib
   # internal classes
   include apt_cacher_ng::params, apt_cacher_ng::install, apt_cacher_ng::config, apt_cacher_ng::service
 }

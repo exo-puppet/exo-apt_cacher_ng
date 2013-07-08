@@ -5,8 +5,8 @@ class apt_cacher_ng::config {
   file { '/var/cache/apt-cacher-ng':
     ensure => directory,
     path   => $apt_cacher_ng::params::cache_dir,
-    mode   => is_virtual ? {
-      'true'  => 777,
+    mode   => str2bool($::is_virtual) ? {
+      true    => 777,
       default => 644
     },
   } -> # Configure apt-cacher-ng to enforce umask and directory + file permissions
