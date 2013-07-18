@@ -27,5 +27,6 @@ class apt_cacher_ng::service {
     require => [
       Package['apt-cacher-ng'],
       Service['apt-cacher-ng']],
+    before  => Class['repo::update'],
   }
 }
