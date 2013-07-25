@@ -4,8 +4,8 @@ class apt_cacher_ng::install {
   case $::operatingsystem {
     /(Ubuntu)/ : {
       package { 'apt_cacher_ng':
-        name   => $apt_cacher_ng::params::package_name,
         ensure => installed,
+        name   => $apt_cacher_ng::params::package_name,
       }
     }
     default    : {
