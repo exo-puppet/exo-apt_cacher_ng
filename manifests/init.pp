@@ -20,6 +20,11 @@
 #
 #       define the port to use for apt-cacher-ng
 #
+#   [+directory_mode+]
+#       (OPTIONAL) (default: 644)
+#
+#       allow to change the /var/cache/directory directory mode for vagrant testing with NFS (use directory_mode=777)
+#
 # == Examples
 #
 #   class { "apt_cacher_ng":
@@ -29,8 +34,10 @@
 #
 ################################################################################
 class apt_cacher_ng (
-  $activated = true,
-  $port      = 3142) {
+  $activated      = true,
+  $port           = 3142,
+  # the directory right must be 777 for NFS sharing with Vagrant
+  $directory_mode = 644) {
   # dependencies
   include repo
   include stdlib

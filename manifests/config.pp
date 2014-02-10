@@ -1,14 +1,10 @@
 class apt_cacher_ng::config {
   include apt_cacher_ng::install
 
-  # the directory right must be 777 for NFS sharing with Vagrant
   file { '/var/cache/apt-cacher-ng':
     ensure => directory,
     path   => $apt_cacher_ng::params::cache_dir,
-    mode   => str2bool($::is_virtual) ? {
-      true    => 777,
-      default => 644
-    },
+    mode   => $apt_cacher_ng::directory_mode,
   } -> # Configure apt-cacher-ng to enforce umask and directory + file permissions
   file { '/etc/default/apt-cacher-ng':
     ensure  => present,
