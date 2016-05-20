@@ -39,7 +39,6 @@ class apt_cacher_ng (
   # the directory right must be 777 for NFS sharing with Vagrant
   $directory_mode = 644) {
   # dependencies
-  include repo
   include stdlib
   # internal classes
   include apt_cacher_ng::params, apt_cacher_ng::install, apt_cacher_ng::config, apt_cacher_ng::service

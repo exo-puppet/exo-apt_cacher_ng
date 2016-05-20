@@ -3,10 +3,7 @@ class apt_cacher_ng::install {
 
   case $::operatingsystem {
     /(Ubuntu)/ : {
-      package { 'apt_cacher_ng':
-        ensure => installed,
-        name   => $apt_cacher_ng::params::package_name,
-      }
+      ensure_packages( 'apt-cacher-ng', {'ensure' => 'present'} )
     }
     default    : {
       fail("The ${module_name} module is not supported on ${::operatingsystem}")
