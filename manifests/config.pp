@@ -37,7 +37,7 @@ class apt_cacher_ng::config {
   file_line { 'apt-cacher-ng_port':
     ensure  => present,
     path    => '/etc/apt-cacher-ng/acng.conf',
-    line    => "Port:${apt_cacher_ng::params::port}",
+    line    => "Port:${apt_cacher_ng::port}",
     match   => '^Port:',
     notify  => Service['apt-cacher-ng'],
   }
@@ -50,6 +50,7 @@ class apt_cacher_ng::config {
           file_line { 'apt-cacher-ng_passthrough':
             ensure  => absent,
             path    => '/etc/apt-cacher-ng/acng.conf',
+            line    => "PassThroughPattern: .*",
             match   => '^PassThroughPattern:',
             notify  => Service['apt-cacher-ng']
           }
